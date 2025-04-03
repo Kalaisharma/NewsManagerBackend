@@ -8,7 +8,7 @@ import router from "./Routes/Routes";
 
 
 const app: Application = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || "https://news-manager-backend-he1g.onrender.com";
 //"https://mynewsmanager.netlify.app"
 // Middleware
 app.use(cors(
