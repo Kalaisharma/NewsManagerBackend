@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://kalaisharma05052003:YalipZ2CmAWG5xoV@newsmanagercluster.sxftplk.mongodb.net/NewsManager';
+
 const newsSchema = new mongoose.Schema({
     fullName: String,
     address: String,
@@ -16,7 +17,6 @@ const newsSchema = new mongoose.Schema({
 
 export const News = mongoose.model('UserFeedback', newsSchema);
 //mongodb://localhost:27017/NewsManager
-
 const connectDB = async (): Promise<typeof mongoose> => {
     try {
         const connection = await mongoose.connect(MONGO_URI, {

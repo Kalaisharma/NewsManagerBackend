@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 import router from "./Routes/Routes";
 // import errorHandler from "./middlewares/errorHandler";
 
@@ -9,11 +9,11 @@ import router from "./Routes/Routes";
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
-
+//"https://mynewsmanager.netlify.app"
 // Middleware
 app.use(cors(
 {
-    origin: "https://mynewsmanager.netlify.app", // ✅ Your Netlify frontend URL
+    origin: "*", // ✅ Your Netlify frontend URL 
     methods: "GET,POST,PUT,DELETE", // ✅ Allow these HTTP methods
     credentials: true, // ✅ If using cookies/authentication
   }
