@@ -5,7 +5,7 @@ import router from "./Routes/Routes";
 // import errorHandler from "./middlewares/errorHandler";
 
 // Load environment variables
-
+require("dotenv").config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
