@@ -8,10 +8,11 @@ import router from "./Routes/Routes";
 
 
 const app: Application = express();
-const PORT = process.env.PORT || "https://news-manager-backend-he1g.onrender.com";
+const PORT = process.env.PORT || 5000;
+
 //"https://mynewsmanager.netlify.app"
 // Middleware
-app.use(cors(
+app.use(cors( 
 {
     origin: "*", // ✅ Your Netlify frontend URL 
     methods: "GET,POST,PUT,DELETE", // ✅ Allow these HTTP methods
