@@ -1,9 +1,12 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-//import { sampleHandler } from "../controllers/sampleController";
+const Controller_1 = require("../Controllers/Controller");
+
 const router = (0, express_1.Router)();
-//router.get("/sample", sampleHandler);
+
+router.post("/start", Controller_1.getNews);
+
 // Additional routes can be added here
 // router.post("/example", exampleHandler);
-exports.default = router;
+
+module.exports = router;

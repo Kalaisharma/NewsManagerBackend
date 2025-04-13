@@ -1,22 +1,26 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const Routes_1 = __importDefault(require("./Routes/Routes"));
-// import errorHandler from "./middlewares/errorHandler";
-// Load environment variables
-const app = (0, express_1.default)();
+const express = require("express");
+const cors = require("cors");
+const router = require("./Routes/Routes");
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+const app = express();
 const PORT = process.env.PORT || 5000;
-// Middleware
-app.use((0, cors_1.default)());
-app.use(express_1.default.json()); // Parse JSON requests
-app.use(express_1.default.urlencoded({ extended: true })); // Parse URL-encoded requests
-// Routes
-app.use("/api", Routes_1.default);
-// Start server
+
+app.use(cors({ origin: "*" })); // Enable CORS for all origins
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/news", router);
+
+// Gracefully close MongoDB connection on app shutdown
+process.on("SIGINT", async () => {
+  await mongoose.connection.close();
+  console.log("MongoDB connection closed gracefully");
+  process.exit(0);
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running at PORT:${PORT}`);
 });
