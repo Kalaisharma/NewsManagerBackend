@@ -40,4 +40,4 @@ const connectDB = async () => {
   }
 };
 
-exports.default = connectDB;
+exports.connectDB = connectDB;
