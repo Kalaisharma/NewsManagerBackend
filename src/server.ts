@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 //"https://mynewsmanager.netlify.app"
 // Middleware
-app.use(cors());
+app.use(cors({ origin: '*' })); // For wide open access during debugging
 app.use(express.json()); // Parse JSON requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded requests
 
