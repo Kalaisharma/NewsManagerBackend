@@ -3,15 +3,6 @@ import connectDB from "../Database/Mongoose";
 import mongoose from "mongoose";
 import {News} from "../Database/Mongoose";
 
-
-// Get All News Articles
-// export const getNews = (req: Request, res: Response) => {
-//   const data = req.body
-//     console.log(data);
-    
-//   res.status(200).send("Hi there");
-// };
-
 export const getNews = async (req: Request, res: Response) => {
     try {
         await connectDB(); // Establish connection
@@ -26,8 +17,5 @@ export const getNews = async (req: Request, res: Response) => {
     } catch (error) {
         console.error("Error adding news:", error);
         res.status(500).json({ message: "Internal Server Error" });
-    } finally {
-        await mongoose.connection.close(); // Close connection after processing
-        console.log("MongoDB connection closed");
-    }
+    } 
 };
